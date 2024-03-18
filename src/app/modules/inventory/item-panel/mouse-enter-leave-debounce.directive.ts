@@ -13,7 +13,7 @@ export enum MOUSE_EVENT {
 })
 export class MouseEnterLeaveDebounceDirective implements OnInit, OnDestroy {
     @Input() mouseEnterDebounceTime: number = 500;
-    @Input() mouseLeaveDebounceTime: number = 2000;
+    @Input() mouseLeaveDebounceTime: number = 1000;
     @Input() forceBlockEventEmitter: boolean = false;
 
     @Output() debounceMouseEnter: EventEmitter<MOUSE_EVENT> = new EventEmitter();

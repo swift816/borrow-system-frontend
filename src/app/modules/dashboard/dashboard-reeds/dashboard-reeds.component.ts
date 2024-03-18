@@ -16,6 +16,6 @@ export class DashboardReedsComponent implements OnInit{
     this.router.navigate(['/inventory/faculty']);
   }
   directToHistory(): void {
-    this.router.navigate(['/history/reeds']);
+    this.router.navigate(['/history/reads']);
   }
 }
