@@ -30,11 +30,11 @@
 }
 .detail-container-desc{
     width: 12%;
-    margin-right: 6%;
+    margin-right: 5%;
 }
 .detail-container-status{
     width: 12%;
-    margin-right: 6%;
+    margin-right: 9%;
 }
 .detail-container-quantity{
     width: 12%;
@@ -63,7 +63,9 @@
     padding-bottom: 3px;
 
 }
-
+.disable_ripple:hover{
+    background-color: white;
+}
 .expanded-description{
     display: flex;
 }

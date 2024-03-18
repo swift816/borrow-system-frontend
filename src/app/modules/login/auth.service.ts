@@ -8,12 +8,12 @@ import { Router } from '@angular/router';
 export class AuthService {
     private readonly users = [
         { accountId: 'student', password: 'student', role: 'student' },
-        { accountId: 'reeds', password: 'reeds', role: 'reeds' },
+        { accountId: 'reads', password: 'reads', role: 'reads' },
         { accountId: 'faculty', password: 'faculty', role: 'faculty' },
         { accountId: 'oic', password: 'oic', role: 'oic' }
     ];
 
-    
+
     constructor(private router: Router) {}
 
     login(accountId: string, password: string): boolean {
@@ -25,7 +25,7 @@ export class AuthService {
                 this.router.navigate(['/dashboard/student']);
                 break;
             case 'reeds':
-                this.router.navigate(['/dashboard/reeds']);
+                this.router.navigate(['/dashboard/reads']);
                 break;
             case 'faculty':
                 this.router.navigate(['/dashboard/faculty']);

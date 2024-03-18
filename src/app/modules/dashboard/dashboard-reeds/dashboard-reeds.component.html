@@ -4,7 +4,7 @@
     
     <div class="menu-panel">
         <div class="buttons">
-            <button style=" justify-content: flex-start;" mat-raised-button>
+            <button style=" justify-content: flex-start;" mat-raised-button (click)="directToInventory()">
                 <mat-icon>inbox</mat-icon>
                     Inventory List
                 </button>
@@ -16,7 +16,7 @@
                 <mat-icon>assignment</mat-icon>
                     Item Requests
                 </button>
-            <button style=" justify-content: flex-start;" mat-raised-button>
+            <button style=" justify-content: flex-start;" mat-raised-button (click)="directToHistory()">
                 <mat-icon>history</mat-icon>
                     Borrowed History
                 </button>

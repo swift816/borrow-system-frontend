@@ -94,7 +94,7 @@ export class ItemsComponent implements OnInit {
         description: this.selectedCategories.description,
       },
     };
-    this.router.navigate(['/inventory'], navigationExtras);
+    this.router.navigate(['/inventory/faculty'], navigationExtras);
   }
 
   queryParamsHandler(params: Params): void {

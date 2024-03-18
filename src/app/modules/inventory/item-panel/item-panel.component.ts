@@ -10,7 +10,7 @@ import { ItemDialogComponent } from '../item-dialog/item-dialog.component';
 })
 export class ItemPanelComponent implements OnInit{
   @Input() item: Item = {} as Item | any;
-
+  panelOpenState = false;
   constructor(
     public dialog: MatDialog,
   ) {}

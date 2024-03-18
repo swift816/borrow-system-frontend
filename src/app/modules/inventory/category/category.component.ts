@@ -8,6 +8,7 @@ interface Equipment {
   value: string;
   viewValue: string;
   isSelected: boolean;
+  subcategories: { value: string, viewValue: string }[];
 }
 
 interface Brand {
@@ -66,6 +67,7 @@ export class CategoryComponent implements OnInit {
   remarks: Remarks[] = [];
   departments: Remarks[] = [];
   selectedValue: string[] = [];
+  selectedEquipment: Equipment | null = null;
   @Output() selectedCategories = new EventEmitter<any>();
 
   constructor(
@@ -82,7 +84,14 @@ export class CategoryComponent implements OnInit {
 
     this.loadItemsAndCategories();
   }
-
+  populateSubcategories(): void {
+    this.equipments.forEach(equipment => {
+      equipment.subcategories = [
+        { value: 'subcategory1', viewValue: 'Subcategory 1' },
+        { value: 'subcategory2', viewValue: 'Subcategory 2' }
+      ];
+    });
+  }
   handleQueryParams(params: Params): void {
     
     this.equipments.forEach((equipment) => {
@@ -123,7 +132,7 @@ export class CategoryComponent implements OnInit {
       limit: 25,
       pageSizeOption: [5, 10, 25, 100],
     };
-    
+  
     this.equipmentService.getItems(pagination, '', {}).subscribe(
       (response) => {
         const items = response.data;
@@ -135,14 +144,17 @@ export class CategoryComponent implements OnInit {
         this.remarks = this.getUniqueValues(items, 'remarks');
         this.departments = this.getUniqueValues(items, 'department');
         
+        // Populate subcategories for each equipment type
+        this.populateSubcategories();
+  
         this.emitSelectedCategories();
-        console.log(this.equipments);
       },
       (error) => {
         console.error('Error fetching items:', error);
       }
     );
   }
+  
   
 
   private getUniqueValues(items: any[], key: string): any[] {
@@ -157,6 +169,19 @@ export class CategoryComponent implements OnInit {
   updateQueryParams(category: string, value: string): void {
     const queryParams: Params = {};
     queryParams[category] = value;
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute,
+      queryParams,
+      queryParamsHandling: 'merge',
+    });
+  }
+  updateEquipmentSubcategories(selectedEquipmentValue: string): void {
+    this.selectedEquipment = this.equipments.find(equipment => equipment.value === selectedEquipmentValue) || null;
+  }
+  updateQueryParamsWithSubcategory(equipment: Equipment, subcategory: string): void {
+    const queryParams: Params = {};
+    queryParams['equipmentType'] = equipment.value;
+    queryParams['subcategory'] = subcategory;
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
       queryParams,

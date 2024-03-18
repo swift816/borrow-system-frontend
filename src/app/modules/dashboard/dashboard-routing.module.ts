@@ -11,7 +11,7 @@ const routes: Routes = [
     component: DashboardComponent
   },
   {
-    path: 'reeds',
+    path: 'reads',
     component: DashboardReedsComponent
   },
   {

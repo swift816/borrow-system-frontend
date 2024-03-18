@@ -1,13 +1,15 @@
 <div class="itemlist">
     <mat-accordion>
-        <mat-expansion-panel>
+        <mat-expansion-panel #panel mouseEnterLeaveDebounce
+        (debounceMouseEnter)="panel.open()"
+        (debounceMouseLeave)="panel.close()">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <div class="panel-title">
                         {{ item.name }}
                     </div>
                 </mat-panel-title>
-                <mat-panel-description class="panel-description">
+                <mat-panel-description class="panel-description" >
                     <div class="detail-container">
                         <div class="detail-value">{{ item.serialNo }}</div>
                     </div>
